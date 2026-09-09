@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="VMC-01 Operator HMI">
+  <defs>
+    <style>
+      .bg { fill: #081a1f; }
+      .panel { fill: #112a32; }
+      .stroke { stroke: #5eead4; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+      .accent { fill: #5eead4; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="64" height="64" rx="12"/>
+  <rect class="panel" x="10" y="10" width="44" height="44" rx="8"/>
+  <path class="stroke" d="M18 42V22h8l8 10 8-10h8v20"/>
+  <path class="stroke" d="M22 18h20"/>
+  <circle class="accent" cx="25" cy="25" r="2.5"/>
+  <circle class="accent" cx="39" cy="25" r="2.5"/>
+  <path class="stroke" d="M18 42h28"/>
+</svg>
