@@ -8,7 +8,7 @@ import { JobContext } from "@/components/hmi/JobContext";
 import { PrimaryAction } from "@/components/hmi/PrimaryAction";
 import { StageProgress } from "@/components/hmi/StageProgress";
 import { NEXT_LABEL } from "@/data/stages";
-import { useAdvanceWorkflow } from "@/hooks/useHmiQueries";
+import { useAdvanceWorkflow, useResetWorkflow } from "@/hooks/useHmiQueries";
 import { useStartupWorkflow } from "@/hooks/useStartupWorkflow";
 import { hmiService } from "@/services/hmiService";
 import { MachineChecksStage } from "@/stages/MachineChecksStage";
@@ -43,6 +43,7 @@ function OperatorHmiPage() {
   const { loading, error, refetchAll, machine, setup, progress, operation, stages, currentStage } =
     useStartupWorkflow();
   const advance = useAdvanceWorkflow();
+  const reset = useResetWorkflow();
   const queryClient = useQueryClient();
 
   // Developer-only reset hook (not an operator-facing control).
@@ -105,6 +106,9 @@ function OperatorHmiPage() {
         }
         hint={hint}
         onClick={() => advance.mutate()}
+        resetError={reset.error instanceof Error ? reset.error : null}
+        resetPending={reset.isPending}
+        onReset={() => reset.mutate()}
       />
     </div>
   );

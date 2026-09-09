@@ -114,3 +114,14 @@ export function useStopOperation() {
     onSuccess: (operation) => queryClient.setQueryData(hmiKeys.operation, operation),
   });
 }
+
+export function useResetWorkflow() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: () => hmiService.resetWorkflow(),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ["hmi"] });
+    },
+  });
+}
